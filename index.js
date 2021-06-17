@@ -3,11 +3,10 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
-//Middleware
-app.use("/static", express.static(path.join(__dirname, "public")));
+app.use(express.static("public"));
 
-app.get("/", (req, res) => {
-  res.send("Hello world");
+app.get("/*", (req, res) => {
+  res.sendFile(__dirname + "/index.html");
 });
 
 app.listen(PORT, () =>
